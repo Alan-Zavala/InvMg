@@ -5,11 +5,13 @@
         /* to get the background blurred */
         .background { 
             position: absolute; 
+            display: block;
             height: 100%; 
             width: 100%;
             background: url("images/login-background.jpg");
-            background-size: cover;
+            background-size:cover;
             background-position: center;
+            background-attachment: fixed;
             filter: blur(3px);
             z-index: -1;
         }
@@ -19,7 +21,7 @@
     <script src="https://kit.fontawesome.com/fdb8866bb6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
-<body>
+<body style="margin: 0;">
     <div class="background"></div>
     <div class="container">
         <div class="loginHeader">
