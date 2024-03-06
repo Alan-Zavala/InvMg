@@ -1,13 +1,19 @@
-div.loginHeader {
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+    div.loginHeader {
     text-align: center;
     margin-bottom: 50px;
 }
+
 div.loginHeader h1{
     font-size: 100px;
     color: #ffffff;
     padding: 0px;
     margin: 0px;
 }
+
 div.loginHeader p{
     color:#ffffff;
     font-size:50px;
@@ -15,6 +21,7 @@ div.loginHeader p{
     text-transform: uppercase;
     display: inline-block;
 }
+
 div.loginHeader p:after{
     content:'';
     display:block;
@@ -81,4 +88,92 @@ div.loginInputsContainer i {
     height: 100%;
     padding: 15px;
     margin-bottom: 10px;
+}
+
+div.header {
+    width: 100%;
+    height: 25px;
+    background: #f685a1;
+}
+
+div.banner {
+    background: url('../images/login-background.jpg');
+    background-size: cover;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+div.homepageContainer {
+    width: 100%;
+    max-width: 900px;
+    height: 50vh;
+    margin: 0 auto;
+}
+
+div.bannerHeader h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 140px;
+    color: #ffffff;
+    line-height: 0%;
+}
+
+div.bannerHeader p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color:#fff;
+    text-transform: uppercase;
+    line-height: 0%;
+}
+
+p.bannerTagline{
+    margin-top: 20px;
+    font-size: 25px;
+    color:#fff;
+}
+
+div.bannerIcons{
+    margin-top: 100px;
+}
+
+div.bannerIcons a{
+    font-size: 30px;
+    margin-left: 40px;
+    padding: 15px 15px;
+    background: rgba(0, 0, 0, .5);
+    color: #868485;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+div.bannerIcons a:first-child{
+    margin-left: 0px;
+}
+
+div.bannerIcons a:hover{
+    color: #fff;
+    font-size: 30px;
+    background: #f685a1;
+    transition: .5s all;
+}
+
+div.homepageFeatures{
+
+}
+
+div.homepageFeature{
+
+}
+
+div.homepageFeature span.featureIcon{
+
+}
+
+div.homepageFeature h3.featureTitle{
+    margin-bottom: 20px;
+}
+
+div.homepageFeatrure p.featureDescription{
+    color: #848484;
 }
