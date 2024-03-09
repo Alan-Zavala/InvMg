@@ -1,8 +1,10 @@
 body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-    div.loginHeader {
+div.loginHeader {
     text-align: center;
     margin-bottom: 50px;
 }
@@ -92,8 +94,23 @@ div.loginInputsContainer i {
 
 div.header {
     width: 100%;
-    height: 25px;
+    height: 30px;
     background: #f685a1;
+    text-align: right;
+    padding-top: 10px;
+}
+
+div.header a{
+    font-size: 18px;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 2px solid transparent;
+}
+
+div.header a:hover{
+    border-radius: 5px;
+    border: 2px solid #fff;
 }
 
 div.banner {
@@ -106,7 +123,7 @@ div.banner {
 div.homepageContainer {
     width: 100%;
     max-width: 900px;
-    height: 50vh;
+    height: 60vh;
     margin: 0 auto;
 }
 
@@ -159,21 +176,148 @@ div.bannerIcons a:hover{
 }
 
 div.homepageFeatures{
-
+    display: flex;
+    flex-direction: row;
+    padding: 50px 0px;
+    justify-content: center;
 }
 
 div.homepageFeature{
-
+    padding: 10px 20px;
+    text-align: center;
+    width: 50%;
 }
 
 div.homepageFeature span.featureIcon{
-
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    font-size: 60px;
+    background: #f685a1;
+    color: #fff;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 div.homepageFeature h3.featureTitle{
     margin-bottom: 20px;
+    font-size: 25px;
 }
 
 div.homepageFeatrure p.featureDescription{
     color: #848484;
+    font-size: 18px;
+}
+
+div.homepageNotified{
+    background: #e3e3e3;
+    padding: 50px 0px;
+}
+
+div.homepageNotifiedContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+div.homepageNotified h3{
+    margin-bottom: 20px;
+}
+
+div.homepageNotified p{
+    color: #848484;
+    line-height: 150%;
+    margin-bottom: 30px;
+}
+
+div.emailForm h3{
+    font-size: 30px;
+}
+
+div.emailForm{
+    width: 40%;
+}
+/*
+div.video {
+    width: 60%;
+    text-align: center;
+}
+*/
+
+div.formContainer {
+    width: 80%;
+    position: relative;
+}
+
+div.formContainer input{
+    width: 80%;
+    padding: 15px 10px;
+    border-radius: 15px;
+    border: none;
+}
+
+div.formContainer input:focus{
+    outline: none;
+}
+
+div.formContainer ::placeholder{
+    font-size: 15px;
+}
+
+div.formContainer button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    font-size: 20px;
+    padding: 0px 10px;
+    background: #f685a1;
+    border: none;
+    color: #fff;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+div.formContainer button:hover{
+    background: #ff698e;
+}
+
+div.socials{
+    text-align: center;
+    padding: 60px 0 30px 0px;
+}
+
+div.socialText{
+    margin-top: 15px;
+    margin-bottom: 25px;
+    color: #848484;
+}
+
+div.socialIconsContianer a{
+    font-size: 23px;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    padding-top: 7px;
+    background: #d4d4d4;
+    border-radius: 50%;
+    color: #fff;
+    margin-left: 20px;
+}
+
+div.socialIconsContainer a:hover{
+    background: #f8a4b9;
+    transition: .3s all;
+}
+
+div.footer{
+    background: #e3e3e3;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+div.footer a{
+    color: #848484;
+    margin-left: 30px;
 }
