@@ -123,8 +123,11 @@ div.banner {
 div.homepageContainer {
     width: 100%;
     max-width: 900px;
-    height: 60vh;
     margin: 0 auto;
+}
+
+div.homepageContainer div::after{
+    background: linear-gradient(white, blue);
 }
 
 div.bannerHeader h1{
@@ -188,8 +191,13 @@ div.homepageFeature{
     width: 50%;
 }
 
+div.homepageFeatures div:hover{
+    background-image: linear-gradient(white, #f685a1);
+    transition: .5s all;
+}
+
 div.homepageFeature span.featureIcon{
-    height: 100px;
+    height: 80px;
     width: 100px;
     display: inline-block;
     font-size: 60px;
@@ -198,6 +206,7 @@ div.homepageFeature span.featureIcon{
     border-radius: 50%;
     margin-bottom: 10px;
     margin-top: 20px;
+    padding: 10px 0 10px 0;
 }
 
 div.homepageFeature h3.featureTitle{
@@ -236,6 +245,7 @@ div.emailForm h3{
 
 div.emailForm{
     width: 40%;
+    
 }
 /*
 div.video {
@@ -287,7 +297,7 @@ div.socials{
     padding: 60px 0 30px 0px;
 }
 
-div.socialText{
+p.socialText{
     margin-top: 15px;
     margin-bottom: 25px;
     color: #848484;
@@ -302,7 +312,7 @@ div.socialIconsContianer a{
     background: #d4d4d4;
     border-radius: 50%;
     color: #fff;
-    margin-left: 20px;
+    margin: 5px 30px;
 }
 
 div.socialIconsContainer a:hover{
