@@ -294,7 +294,7 @@ div.formContainer button:hover{
 
 div.socials{
     text-align: center;
-    padding: 60px 0 30px 0px;
+    padding: 50px 0 20px 0px;
 }
 
 p.socialText{
@@ -303,16 +303,16 @@ p.socialText{
     color: #848484;
 }
 
-div.socialIconsContianer a{
+div.socialIconsContainer a{
     font-size: 23px;
-    height: 50px;
+    height: 40px;
     width: 50px;
     display: inline-block;
-    padding-top: 7px;
+    padding-top: 17px;
     background: #d4d4d4;
     border-radius: 50%;
     color: #fff;
-    margin: 5px 30px;
+    margin-left: 20px;
 }
 
 div.socialIconsContainer a:hover{
@@ -322,8 +322,8 @@ div.socialIconsContainer a:hover{
 
 div.footer{
     background: #e3e3e3;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     text-align: center;
 }
 
