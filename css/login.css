@@ -404,6 +404,11 @@ ul.dashboard_menu_list li a{
     color: white;
     display: block;
     font-size: 20px;
+    text-align: center;
+}
+
+ul.dashboard_menu_list li span{
+    padding: 0px 20px;
 }
 
 ul.dashboard_menu_list li a i{
