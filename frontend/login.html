@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* to get the background blurred */
+        .background { 
+            position: absolute; 
+            display: block;
+            height: 100%; 
+            width: 100%;
+            background: url("images/login-background.jpg");
+            background-size:cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: blur(3px);
+            z-index: -1;
+        }
+    </style> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - Inventory Management</title>
+    <script src="https://kit.fontawesome.com/fdb8866bb6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body style="margin: 0;">
+    <div class="background"></div>
+    <div class="container">
+        <div class="loginHeader">
+            <h1>IMS</h1>
+            <p>Inventory Management System</p>
+        </div>
+        <div class="loginBody">
+            <form action="">
+                <div class="loginInputsContainer">
+                    <label for="">Username</label>
+                    <i class="fa fa-user icon"></i>
+                    <input placeholder="username" for="text" />
+                </div>
+                <div class="loginInputsContainer">
+                    <label for="">Password</label>
+                    <i class="fa fa-lock icon"></i>
+                    <input placeholder="password" type="password" />
+                </div>
+                <div class="loginButtonContainer">
+                    <button>Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
