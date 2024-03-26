@@ -6,7 +6,7 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../frontend')
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://database.db'
@@ -97,4 +97,3 @@ def logout():
 if __name__ == '__main__':
      app.run(debug=True)
 
-     
