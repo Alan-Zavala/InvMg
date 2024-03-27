@@ -6,7 +6,7 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 
-app = Flask(__name__, template_folder='../frontend')
+app = Flask(__name__, template_folder='templates')
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://database.db'
@@ -54,7 +54,7 @@ class LoginForm(FlaskForm):
 
 @app.route('/')
 def home():
-     return render_template('dashboard.html')
+     return render_template('homepage.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
