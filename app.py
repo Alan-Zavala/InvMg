@@ -31,29 +31,14 @@ class User(db.Model, UserMixin):
      id = db.Column(db.Integer, primary_key = True)
      username = db.Column(db.String(20), nullable=False, unique=True)
      password = db.Column(db.String(80), nullable=False)
+     first_name = db.Column(db.String(30), nullable=False)
+     last_name = db.Column(db.String(30), nullable=False)
 
-     def __init__(self, username, password):
-          self.usename = username
+     def __init__(self, first_name, last_name, username, password):
+          self.first_name = first_name
+          self.last_name = last_name
+          self.username = username
           self.password = bcrypt.generate_password_hash(password)
-
-class RegisterForm(FlaskForm):
-     username = StringField(validators=[InputRequired(), Length(
-          min=4, max=20)], render_kw={"placeholder": "Username"})
-     
-     password = PasswordField(validators=[InputRequired(), Length(
-          min=4, max=20)], render_kw={"placeholder": "Password"})
-     
-     submit = SubmitField("Register")
-
-     def validate_username(self, username):
-          existing_user_username = User.query.filter_by(
-               username=username.data).first()
-          
-          if existing_user_username:
-               raise ValidationError(
-                    "That username already exists"
-               )
-
 class LoginForm(FlaskForm):
      username = StringField(validators=[InputRequired(), Length(
           min=4, max=20)], render_kw={"placeholder": "Username"})
@@ -62,6 +47,21 @@ class LoginForm(FlaskForm):
           min=4, max=20)], render_kw={"placeholder": "Password"})
      
      submit = SubmitField("Login")
+
+class UserAddForm(FlaskForm):
+     first_name = StringField(validators=[InputRequired(), Length(max=20)], render_kw={"placeholder": ""})
+     last_name = StringField(validators=[InputRequired(), Length(max=20)], render_kw={"placeholder": ""})
+     username = StringField(validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": ""})
+     password = StringField(validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": ""})
+     submit = SubmitField("Add User")
+
+     def validate_username(self, username):
+          existing_user_username = User.query.filter_by(
+               username=username.data).first()
+          
+          if existing_user_username:
+               raise ValidationError("That username already exists")
+
 
 @app.route('/test')
 def testdb():
@@ -92,6 +92,7 @@ def login():
           if user:
                if check_password_hash(user.password, form.password.data):
                     login_user(user)
+                    session['username'] = user.username
                     return redirect(url_for('dashboard'))
           else:
                flash('Invalid username or password', 'error')
@@ -102,11 +103,49 @@ def login():
 def dashboard():
      return render_template('dashboard.html')
 
+@app.route('/add-user', methods=['GET', 'POST'])
+@login_required
+def add_user():
+     form = UserAddForm()
+     users = User.query.all()
+     if request.method == 'POST':
+          if form.validate_on_submit() == False:
+               flash('All fields are required.')
+               return render_template('user-add.html', form=form)
+          else:
+               ins = User(
+                    first_name = request.form['first_name'],
+                    last_name = request.form['last_name'],
+                    username = request.form['username'],
+                    password = request.form['password'])
+               
+          pw = request.form['password']
+          hpw = bcrypt.generate_password_hash(pw).decode('utf-8')
+          is_valid = bcrypt.check_password_hash(hpw, pw)
+          if is_valid:
+               ins.password = hpw
+               db.session.add(ins)
+               db.session.commit()
+               flash('Submited')
+          else:
+               flash('Could Not Submit')
+
+          return redirect(url_for("add_user"))
+     if request.method == 'GET':
+          return render_template('user-add.html', form=form, users=users)
+
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
      logout_user()
      return redirect(url_for('login'))
+
+@app.route('/add-user/<int:user_id>', methods=['GET', 'POST'])
+def delete_user(user_id):
+     user = User.query.get_or_404(user_id)
+     db.session.delete(user)
+     db.session.commit()
+     return redirect(url_for('add_user'))
 
 if __name__ == '__main__':
      app.run(debug=True)

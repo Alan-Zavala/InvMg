@@ -94,6 +94,8 @@ div.loginInputsContainer i {
     margin-bottom: 10px;
 }
 
+/* Homepage */
+
 div.header {
     width: 100%;
     height: 30px;
@@ -381,7 +383,7 @@ div.dashboard_user img{
 
 div.dashboard_user span{
     top: 20%;
-    font-size: 16px;
+    font-size: 22px;
     text-transform: uppercase;
     color: white;
     display:inline-block;
@@ -395,26 +397,27 @@ ul.dashboard_menu_list{
     list-style-type: none;
 }
 
-ul.dashboard_menu_list li{
-    padding: 15px 20px;
+ul.dashboard_menu_list li.liMainMenu{
+    padding: 15px 10px;
     text-transform: uppercase;
 }
 
-ul.dashboard_menu_list li a{
+ul.dashboard_menu_list li.liMainMenu a{
     text-decoration: none;
     color: white;
     display: block;
+    font-size: 17px;
+    padding: 0px 0px 0px 20px;
+}
+
+ul.dashboard_menu_list li.liMainMenu span{
+    padding: 0px 10px;
+}
+
+ul.dashboard_menu_list li.liMainMenu a i{
     font-size: 20px;
-    text-align: center;
-}
-
-ul.dashboard_menu_list li span{
-    padding: 0px 20px;
-}
-
-ul.dashboard_menu_list li a i{
-    font-size: 25px;
     margin-right: 10px;
+    width: 30px;
 }
 
 ul.dashboard_menu_list li.menuActive{
@@ -453,11 +456,148 @@ a#logoutBtn {
 }
 
 div.dashboard_content{
-    padding: 50px 10px 10px 10px;
+    padding: 20px 10px 10px 10px;
 }
 
 div.dashboard_content_main{
     background: white;
+    padding: 10px 0px;
     min-height: 800px;
     height: 100%;
+}
+
+/* User Add Page*/
+
+div#errorMessage{
+    background: #fff;
+    text-align: center;
+    color: red;
+    font-size: 20px;
+    padding: 11px;
+}
+
+form::after{
+    content: '';
+    clear: both;
+    display: block;
+}
+
+form.appForm{
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #cecfd0;
+    border-radius: 5px;
+    background: #f4f6f9;
+}
+
+form label{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+form input.appFormInput{
+    width: 100%;
+    height: 33px;
+    border: 1px solid #d6d7da;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+div#userAddFormContianer{
+    padding-top: 50px;
+}
+form input.appBtn{
+    background: #f685a2;
+    border: 1px #f685a1;
+    border-radius: 3px;
+    color: #fff;
+    padding: 10px;
+    float: left;
+}
+
+div.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+div.column{
+    width: 100%;
+    padding: 0px 10px;
+}
+
+div.column-5{
+    width: 30%;
+}
+
+div.column-7{
+    width: 65%;
+}
+
+h1.section_header{
+    font-size: 21px;
+    color: #f685a1;
+    border-bottom: 1px solid #ffd7e1;
+    padding-top: 11px;
+    padding: 10px;
+    border-left: 4px solid #f690bf;
+    margin-bottom: 15px; 
+}
+
+div.section_content{
+    padding-top: 50px;
+}
+
+table, th, td{
+    border: 1px solid #cacaca;
+    border-collapse: collapse;
+}
+
+table{
+    width: 100%;
+}
+
+table th{
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    background: #f4f6f9;
+}
+
+table td{
+    font-size: 13px;
+}
+
+/* drop down menu - dashboard */
+
+a.SubMenuLink{
+    padding-left: 10px !important;
+    padding-top: 15px !important;
+    padding-bottom: 10px !important;
+    text-transform: none;
+    font-size: 15px !important;
+}
+
+a.SubMenuLink i{
+    font-size: 15px !important;
+    width: 16px !important;
+}
+
+ul.subMenus{
+    list-style-type: none;
+    display: none;
+}
+
+i.mainMenuIconArrow{
+    float: right;
+    font-size: 17px !important;
+    margin-top: 7px;
+}
+
+.subMenuActive{
+    font-weight: bold;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
 }
