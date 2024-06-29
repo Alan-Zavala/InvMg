@@ -398,7 +398,7 @@ ul.dashboard_menu_list{
 }
 
 ul.dashboard_menu_list li.liMainMenu{
-    padding: 15px 10px;
+    padding: 0px;
     text-transform: uppercase;
 }
 
@@ -406,8 +406,8 @@ ul.dashboard_menu_list li.liMainMenu a{
     text-decoration: none;
     color: white;
     display: block;
-    font-size: 17px;
-    padding: 0px 0px 0px 20px;
+    font-size: 16px;
+    padding: 10px 0px 15px 20px;
 }
 
 ul.dashboard_menu_list li.liMainMenu span{
@@ -428,7 +428,7 @@ ul.dashboard_menu_list li.menuActive{
 ul.dashboard_menu_list li:hover{
     background: #f685a1;
     color: white;
-    transition: 0.3s all;
+    transition: .3s all;
 }
 
 div.dashboard_content_container{
@@ -461,8 +461,10 @@ div.dashboard_content{
 
 div.dashboard_content_main{
     background: white;
-    padding: 10px 0px;
+    padding: 10px 0px 0px 20px;
     min-height: 800px;
+    border: 2px solid grey;
+    border-radius: 10px;
     height: 100%;
 }
 
@@ -573,31 +575,39 @@ table td{
 /* drop down menu - dashboard */
 
 a.SubMenuLink{
-    padding-left: 10px !important;
+    padding-left: 35px !important;
     padding-top: 15px !important;
-    padding-bottom: 10px !important;
+    padding-bottom: 15px !important;
     text-transform: none;
     font-size: 15px !important;
 }
 
 a.SubMenuLink i{
-    font-size: 15px !important;
+    font-size: 12px !important;
     width: 16px !important;
+    margin: 0px;
 }
 
 ul.subMenus{
-    list-style-type: none;
+    background: #c26a80;
+    padding: 0px;
     display: none;
+    list-style-type: none;
+}
+
+ul.subMenus li:hover{
+    transition: .3s all;
 }
 
 i.mainMenuIconArrow{
     float: right;
     font-size: 17px !important;
-    margin-top: 7px;
+    margin-top: 5px;
 }
 
 .subMenuActive{
     font-weight: bold;
     border-top: 2px solid white;
     border-bottom: 2px solid white;
+    background: #763a49;
 }

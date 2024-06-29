@@ -47,14 +47,16 @@ document.addEventListener('click', function(e){
 
         // close submenus
         let subMenus = document.querySelectorAll('.subMenus');
-        subMenus.forEach((sub) => {
+        subMenus.forEach((sub) => { 
             if(subMenu !== sub) sub.style.display='none';
         });
 
+        // call function //
         showHideSubMenu(subMenu, mainMenuIcon);
     }
 });
 
+// check for submenu //
 function showHideSubMenu(subMenu, mainMenuIcon){
     if(subMenu != null){
         if(subMenu.style.display==='block'){
@@ -72,15 +74,23 @@ function showHideSubMenu(subMenu, mainMenuIcon){
 let pathArray = window.location.pathname.split('/');
 let curFile = pathArray[pathArray.length - 1];
 
-let curNav = document.querySelector('a[href="./' + curFile + '"]');
-curNav.classList.add('subMenuActive');
+let curNav = document.querySelector('a[href*="/' + curFile + '"');
+if (curNav) {
+    curNav.classList.add('subMenuActive');
 
-let mainNav = curNav.closest('li.liMainMenu');
-mainNav.style.background = '#f685a1';
+    // Access parent elements only if curNav is not null
+    let mainNav = curNav.closest('li.liMainMenu');
+    if (mainNav) {
+        mainNav.style.background = '#f685a1';
 
-let subMenu = curNav.closest('.subMenus');
-let mainMenuIcon = mainNav.querySelector('i.mainMenuIconArrow');
+        // Find subMenus and mainMenuIcon only if mainNav is found
+        let subMenu = curNav.closest('.subMenus');
+        let mainMenuIcon = mainNav.querySelector('i.mainMenuIconArrow');
 
-showHideSubMenu(subMenu, mainMenuIcon);
+        // Perform additional actions if subMenu and mainMenuIcon are found
+        if (subMenu && mainMenuIcon) {
+            showHideSubMenu(subMenu, mainMenuIcon);
+        }
+    }
+}
 
-console.log(mainNav);

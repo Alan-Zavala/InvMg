@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - IMS</title>
+    <title>View Products - IMS</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/login.css') }}">
     <script src="https://kit.fontawesome.com/fdb8866bb6.js" crossorigin="anonymous"></script>
 </head>
@@ -13,25 +13,12 @@
         {% include 'partials/app-sidebar.html' %}
         </div>
         <div class="dashboard_content_container" id="dashboard_content_container">
-            {% include 'partials/app-sidebar.html' %}
+            {% include 'partials/dashboard_topNav.html' %}
             <div class="dashboard_content">
                 <div class="dashboard_content_main">
                     <div class="row">
-                        <div class="column column-5">
-                            <h1 class="section_header"><i class="fa fa-plus"></i>Add User</h1>
-                            <div id="userAddFormContianer">
-                                <form action="" method="POST" class="appForm">
-                                    {{form.hidden_tag()}}
-                                    {{form.first_name.label(class_="label")}}{{form.first_name(class_="appFormInput")}}
-                                    {{form.last_name.label(class_="label")}}{{form.last_name(class_="appFormInput")}}
-                                    {{form.username.label(class_="label")}}{{form.username(class_="appFormInput")}}
-                                    {{form.password.label(class_="label")}}{{form.password(class_="appFormInput")}}
-                                    {{form.submit(class_="appBtn")}}
-                                </form>
-                            </div>
-                        </div>
-                        <div class="column column-7">
-                            <h1 class="section_header"><i class="fa fa-list"></i>List of Users</h1>
+                        <div class="column column-12">-
+                            <h1 class="section_header"><i class="fa fa-list"></i>List of Products</h1>
                             <div class="section_content">
                                 <div class="users">
                                     <table>
@@ -67,7 +54,7 @@
             </div>
         </div>
     </div>
-<script type="text/javascript" src="jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../js/script.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../static/js/script.js"></script>
 </body>
 </html>

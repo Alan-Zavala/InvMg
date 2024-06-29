@@ -1,7 +1,7 @@
 <div class="dashboard_sidebar" id="dashboard_sidebar">
     <h3 class="dashboard_logo" id="dashboard_logo">IMS</h3>
     <div class="dashboard_user">
-        <img src="../images/Alan.jpeg" alt="User Image." id="userImg">
+        <img src="../../static/images/Alan.jpeg" alt="User Image." id="userImg">
         <span>{{current_user.username}}</span>
     </div>
     <div class="dashboard_menu">
@@ -10,27 +10,35 @@
                 <a href="{{url_for('dashboard')}}"><i class="fa fa-dashboard"></i><span class="menuText">Dashboard</span></a>
             </li>
             <li class="liMainMenu">
-                <a href="#"><i class="fa fa-user-plus"></i><span class="menuText">Product Management</span></a>
+                <a href="javascript:void(0);" class="showHideSubMenu">
+                    <i class="fa fa-tag showHideSubMenu"></i>
+                    <span class="menuText showHideSubMenu">Products</span>
+                    <i class="fa fa-angle-left mainMenuIconArrow showHideSubMenu"></i>
+                </a>
+                <ul class="subMenus">
+                    <li><a class="SubMenuLink" href="#"><i class="fa fa-circle-o"></i>View Products</a></li>
+                    <li><a class="SubMenuLink" href="#"><i class="fa fa-circle-o"></i>Add Products</a></li>
+                </ul>
             </li>
             <li class="liMainMenu">
                 <a href="javascript:void(0);" class="showHideSubMenu">
                     <i class="fa fa-truck showHideSubMenu"></i>
-                    <span class="menuText showHideSubMenu">Supplier</span>
+                    <span class="menuText showHideSubMenu">Orders</span>
                     <i class="fa fa-angle-left mainMenuIconArrow showHideSubMenu"></i>
                 </a>
                 <ul class="subMenus">
-                    <li><a class="subMenuLink" href="#"><i class="fa fa-circle-o"></i>View Supplier</a></li>
-                    <li><a class="subMenuLink" href="#"><i class="fa fa-circle-o"></i>Add Supplier</a></li>
+                    <li><a class="SubMenuLink" href="#"><i class="fa fa-circle-o"></i>View Orders</a></li>
+                    <li><a class="SubMenuLink" href="#"><i class="fa fa-circle-o"></i>Add Orders</a></li>
                 </ul>
             </li>
             <li class="liMainMenu showHideSubMenu">
                 <a href="javascript:void(0);" class="showHideSubMenu">
                     <i class="fa fa-user-plus showHideSubMenu"></i>
-                    <span class="menuText showHideSubMenu">User</span>
+                    <span class="menuText showHideSubMenu">Users</span>
                     <i class="fa fa-angle-left mainMenuIconArrow showHideSubMenu"></i>
                 </a>
                 <ul class="subMenus">
-                    <li><a class="SubMenuLink" href="#"><i class="fa fa-circle-o"></i>View Users</a></li>
+                    <li><a class="SubMenuLink" href="{{url_for('view_user')}}"><i class="fa fa-circle-o"></i>View Users</a></li>
                     <li><a class="SubMenuLink" href="{{url_for('add_user')}}"><i class="fa fa-circle-o"></i>Add Users</a></li>
                 </ul>
             </li>

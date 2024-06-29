@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Users - IMS</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/login.css') }}">
+    <script src="https://kit.fontawesome.com/fdb8866bb6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="dashboardMainContainer">
+        {% include 'partials/app-sidebar.html' %}
+        </div>
+        <div class="dashboard_content_container" id="dashboard_content_container">
+            {% include 'partials/dashboard_topNav.html' %}
+            <div class="dashboard_content">
+                <div class="dashboard_content_main">
+                    <div class="row">
+                        <div class="column column-12">
+                            <h1 class="section_header"><i class="fa fa-list"></i>List of Users</h1>
+                            <div class="section_content">
+                                <div class="users">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Username</th>
+                                                <th>Role</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for user in users %}
+                                                <tr>
+                                                    <td>{{user.id}}</td>
+                                                    <td>{{user.first_name}} {{user.last_name}}</td>
+                                                    <td>{{user.username}}</td>
+                                                    <td>{{user.role}}</td>
+                                                    <td>
+                                                        <a href="#" class="editUser"><i class="fa fa-pencil"></i>Edit</a><br>
+                                                        <a href="{{url_for('delete_user', user_id = user.id)}}" class="deleteUser"><i class="fa fa-trash"></i>Delete</a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
