@@ -2,7 +2,7 @@ from flask import render_template, session, request, redirect, url_for, flash, c
 from app import db, bcrypt
 from flask_login import login_user, login_required, logout_user, current_user
 from flask_bcrypt import generate_password_hash, check_password_hash
-from app.forms import UserAddForm, LoginForm
+from app.forms import UserAddForm, ProductAddForm, OrderAddForm, LoginForm
 from app.models import User, Product, Order, Inventory, Category
 
 
@@ -27,10 +27,10 @@ def testdb():
           # orders = db.session.execute(db.select(Order)   # update
           #      .order_by(User.username)).scalars()
      
-          all_text = '<ul>'
-          for name in users:
-               all_text += '<li>' + name.username + ', ' + name.password + '</li>'
-          all_text += '</ul>'
+          # all_text = '<ul>'
+          # for name in users:
+          #      all_text += '<li>' + name.username + ', ' + name.password + '</li>'
+          # all_text += '</ul>'
 
           # all_text = '<ul>'
           # for product in products:
@@ -41,7 +41,7 @@ def testdb():
           # for order in orders:
           #      all_text += '<li>' + order.product_id + ',' + order.quantity + '</li>'
           # all_text += '</ul>'
-          return all_text
+          return users[0]
      
      except Exception as e:
           # e holds description of the error
@@ -97,25 +97,25 @@ def view_user():
      return render_template('view-user.html', users=users)
 
 # add products
-# @app.route('/add_product', methods=['GET', 'POST'])
-# @login_required
-# def add_product():
-#      form = ProductAddForm()
-#      products = Product.query.all()
-#      if request.method == 'POST':
-#           if not form.validate_on_submit():
-#                flash('All fields are required.')
-#                return render_template('add-product.html', form=form)
+@app.route('/add_product', methods=['GET', 'POST'])
+@login_required
+def add_product():
+     form = ProductAddForm()
+     products = Product.query.all()
+     if request.method == 'POST':
+          if not form.validate_on_submit():
+               flash('All fields are required.')
+               return render_template('add-product.html', form=form)
           
-#           # Create new Product entry
-#           prod = Product(
-#                     first_name = form.first_name.data,
-#                     last_name = form.last_name.data,
-#                     username = form.username.data,
-#                     password = hpw)
+          # Create new Product entry
+          prod = Product(
+                    name = form.name.data,
+                    price = form.price.data,
+                    category = form.category.data,
+                    description= form.description.data)
           
-#      if request.method == 'GET':
-#           return render_template('add-product.html', form=form)
+     if request.method == 'GET':
+          return render_template('add-product.html', form=form)
      
 # add orders
 # @app.route('/add_order', methods=['GET', 'POST'])
@@ -143,41 +143,47 @@ def view_user():
 @login_required
 def add_user():
      form = UserAddForm()
-     users = User.query.all()
      if not form.validate_on_submit():
           flash('All fields are required.')
           return render_template('add-user.html', form=form)
-     
-     # Check if the username is already taken
-     existing_user = User.query.filter_by(username=form.username.data).first()
-     if existing_user:
-          flash('Username is already taken.')
-          return render_template('add-user.html', form=form)
-     
-     # Check password validity before hashing
-     pw = form.password.data
-     if not pw:
-          flash('Password is required.')
-          return render_template('add-user.html', form=form)
+     else:
+          f_name = form.first_name.data
+          l_name = form.last_name.data
+          un = form.username.data
+          pw = form.password.data
+          rl = form.role.data
 
-     hpw = bcrypt.generate_password_hash(pw).decode('utf-8')
+          # Check if the username is already taken
+          existing_user = User.query.filter_by(username=form.username.data).first()
+          if existing_user:
+               flash('Username is already taken.')
+               return redirect(url_for('add_user'))
+          
+          # Check password validity before hashing
+          if not pw:
+               flash('Password is required.')
+               return render_template('add-user.html', form=form)
 
-     # Create new User
-     ins = User(
-               first_name = form.first_name.data,
-               last_name = form.last_name.data,
-               username = form.username.data,
-               password = hpw,
-               role = form.role.data)
-     
-     if  bcrypt.check_password_hash(hpw, ins.password):
+          hpw = bcrypt.generate_password_hash(pw).decode('utf-8')
+
+          # Create new User
+          ins = User(
+                    first_name = f_name,
+                    last_name = l_name,
+                    username = un,
+                    password = hpw,
+                    role = rl)
+          
           db.session.add(ins)
           db.session.commit()
           flash('Submited')
           return redirect(url_for("view_user"))
+          # if  bcrypt.check_password_hash(hpw, ins.password):
+          #      db.session.add(ins)
+          #      db.session.commit()
+          #      flash('Submited')
+          #      return redirect(url_for("view_user"))
           
-     # if request.method == 'GET':
-     #      return render_template('add-user.html', form=form)
 
 @app.route('/logout', methods=['GET', 'POST'])
 @login_required

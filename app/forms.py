@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, SelectField, DecimalField, DateTimeField, IntegerField, FloatField
 from wtforms.validators import InputRequired, Length, ValidationError
 from app.models import User, Product
 from app import bcrypt
@@ -29,15 +29,16 @@ class UserAddForm(FlaskForm):
           if existing_user_username:
                raise ValidationError("That username already exists")
           
-# class ProductAddForm(FlaskForm):
-#      name = StringField(validators=[InputRequired(), Length(max=20)], render_kw={"placeholder": ""})
-#      subgenre = SelectField(u'Type', options=[('Type 1', 'Food'), ('Type 2', 'Chair')])
-#      description = StringField(validators=[InputRequired(), Length(max=200)], render_kw={"placeholder": ""})
-#      submit = SubmitField("Add Product")
+class ProductAddForm(FlaskForm):
+     name = StringField(validators=[InputRequired(), Length(max=50)], render_kw={"placeholder": ""})
+     category = SelectField()
+     price = DecimalField('price', places=2)
+     description = StringField(validators=[InputRequired(), Length(max=200)], render_kw={"placeholder": ""})
+     submit = SubmitField("Add Product")
 
-# class OrderAddForm(FlaskForm):   # Update
-#      first_name = StringField(validators=[InputRequired(), Length(max=20)], render_kw={"placeholder": ""})
-#      last_name = StringField(validators=[InputRequired(), Length(max=20)], render_kw={"placeholder": ""})
-#      username = StringField(validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": ""})
-#      password = StringField(validators=[InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": ""})
-#      submit = SubmitField("Add Order")
+class OrderAddForm(FlaskForm):
+     order_date = DateTimeField('Date of order', format='%m/%d/%y',validators=[InputRequired()])
+     product_id = SelectField(u'Type', options=[('Type1', 1)])
+     quantity = IntegerField()
+     total_amount = FloatField()
+     submit = SubmitField("Add Order")

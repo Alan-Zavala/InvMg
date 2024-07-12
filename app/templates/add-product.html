@@ -19,13 +19,13 @@
                     <div class="row">
                         <div class="column column-12">
                             <h1 class="section_header"><i class="fa fa-plus"></i>Add Product</h1>
-                            <div id="userAddFormContianer">
+                            <div id="productAddFormContianer">
                                 <form action="" method="POST" class="appForm">
                                     {{form.hidden_tag()}}
-                                    {{form.first_name.label(class_="label")}}{{form.first_name(class_="appFormInput")}}
-                                    {{form.last_name.label(class_="label")}}{{form.last_name(class_="appFormInput")}}
-                                    {{form.username.label(class_="label")}}{{form.username(class_="appFormInput")}}
-                                    {{form.password.label(class_="label")}}{{form.password(class_="appFormInput")}}
+                                    {{form.name.label(class_="label")}}{{form.name(class_="appFormInput")}}
+                                    {{form.price.label(class_="label")}}{{form.price(class_="appFormInput")}}
+                                    {{form.category.label(class_="label")}}{{form.category(class_="appFormInput")}}
+                                    {{form.description.label(class_="label")}}{{form.description(class_="appFormInput")}}
                                     {{form.submit(class_="appBtn")}}
                                 </form>
                             </div>
