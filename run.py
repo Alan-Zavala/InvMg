@@ -1,5 +1,5 @@
 from app import db, create_app
-from app.models import User  # Import your User model
+from app.models import User, Category  # Import your User model
 
 app = create_app()
 
@@ -21,6 +21,19 @@ if __name__ == '__main__':
 
         db.session.add(new_user)
         db.session.commit()
+
+        # Command to populate categories
+        categories = ['1-piece sofa', '2-piece sofa', '3-piece sofa', 'Washing machine', 'Dryer', 'Table', 'Chair'
+                      , 'Refrigerator', 'Appliance', 'Matress', 'Clothing', 'Dresser', 'Mirror', 'Bedframe', 'Electronic', 'Bed covers', 'Carpet']
+
+        for category_name in categories:
+            category = Category.query.filter_by(name=category_name).first()
+            if not category:
+                category = Category(name=category_name)
+                db.session.add(category)
+    
+        db.session.commit()
+        print("Categories populated successfully.")
                 
     print("Database tables created successfully!")
     app.run(debug=True)

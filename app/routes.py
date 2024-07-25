@@ -111,8 +111,13 @@ def add_product():
           prod = Product(
                     name = form.name.data,
                     price = form.price.data,
-                    category = form.category.data,
+                    category_id = form.category.data,
                     description= form.description.data)
+          
+          db.session.add(prod)
+          db.session.commit()
+          flash('Submited')
+          return redirect(url_for("view_product"))
           
      if request.method == 'GET':
           return render_template('add-product.html', form=form)

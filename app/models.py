@@ -32,7 +32,7 @@ class Product(db.Model, UserMixin):
      category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
      description = db.Column(db.String(200), nullable=True)
 
-     product = db.relationship('Order', backref='product', lazy=True)
+     category = db.relationship('Category', backref='product', lazy=True)
 
      def __init__(self, name, price, category_id, description):
           self.name = name
@@ -48,6 +48,8 @@ class Order(db.Model, UserMixin):
      quantity = db.Column(db.Integer, nullable = False)
      total_amount = db.Column(db.Float, nullable = False)
 
+     product = db.relationship('Product', backref='orders', lazy=True)
+
      def __init__(self, order_date, product_id, quantity, total_amount):
           self.order_date = order_date
           self.product_id = product_id
@@ -56,22 +58,20 @@ class Order(db.Model, UserMixin):
 
 # INVENTORY table
 class Inventory(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
-    quantity = db.Column(db.Integer, nullable=False)
+     id = db.Column(db.Integer, primary_key=True)
+     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+     quantity = db.Column(db.Integer, nullable=False)
 
-    product = db.relationship('Product', backref='inventory', lazy=True)
+     product = db.relationship('Product', backref='inventory', lazy=True)
 
-    def __init__(self, product_id, quantity):
-         self.product_id = product_id
-         self.quantity = quantity
+     def __init__(self, product_id, quantity):
+          self.product_id = product_id
+          self.quantity = quantity
 
 # CATEGORY table
 class Category(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+     id = db.Column(db.Integer, primary_key=True)
+     name = db.Column(db.String(100), nullable=False)
 
-    products = db.relationship('Product', backref='category', lazy=True)
-
-    def __init__(self, name):
+     def __init__(self, name):
          self.name = name

@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, SelectField, DecimalField, DateTimeField, IntegerField, FloatField
-from wtforms.validators import InputRequired, Length, ValidationError
-from app.models import User, Product
+from wtforms.validators import InputRequired, Length, ValidationError, DataRequired
 from app import bcrypt
+from app.models import Category, User
 
 # FORMS
 class LoginForm(FlaskForm):
@@ -31,10 +31,14 @@ class UserAddForm(FlaskForm):
           
 class ProductAddForm(FlaskForm):
      name = StringField(validators=[InputRequired(), Length(max=50)], render_kw={"placeholder": ""})
-     category = SelectField()
+     category = SelectField('Category', validators=[DataRequired()], coerce=int)
      price = DecimalField('price', places=2)
      description = StringField(validators=[InputRequired(), Length(max=200)], render_kw={"placeholder": ""})
      submit = SubmitField("Add Product")
+     def __init__(self, *args, **kwargs):
+        super(ProductAddForm, self).__init__(*args, **kwargs)
+        # Populate choices for SelectField with category data
+        self.category.choices = [(category.id, category.name) for category in Category.query.all()]
 
 class OrderAddForm(FlaskForm):
      order_date = DateTimeField('Date of order', format='%m/%d/%y',validators=[InputRequired()])

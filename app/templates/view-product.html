@@ -25,22 +25,22 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Username</th>
-                                                <th>Action</th>
+                                                <th>Name</th>
+                                                <th>Price</th>
+                                                <th>Category</th>
+                                                <th>Description</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for user in users %}
+                                            {% for product in Products %}
                                                 <tr>
-                                                    <td>{{user.id}}</td>
-                                                    <td>{{user.first_name}}</td>
-                                                    <td>{{user.last_name}}</td>
-                                                    <td>{{user.username}}</td>
+                                                    <td>{{product.id}}</td>
+                                                    <td>{{product.name}}</td>
+                                                    <td>{{product.category}}</td>
+                                                    <td>{{product.description}}</td>
                                                     <td>
                                                         <a href="#" class="editUser"><i class="fa fa-pencil"></i>Edit</a><br>
-                                                        <a href="{{url_for('delete_user', user_id = user.id)}}" class="deleteUser"><i class="fa fa-trash"></i>Delete</a>
+                                                        <a href="{{url_for('delete_product', product_id = product.id)}}" class="deleteUser"><i class="fa fa-trash"></i>Delete</a>
                                                     </td>
                                                 </tr>
                                             {% endfor %}
