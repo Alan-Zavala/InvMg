@@ -20,7 +20,7 @@
                         <div class="column column-12">
                             <h1 class="section_header"><i class="fa fa-plus"></i>Add User</h1>
                             <div id="userAddFormContianer">
-                                <form action="" method="POST" class="appForm">
+                                <form action="{{ url_for('add_user') }}" method="POST" class="appForm">
                                     {{form.hidden_tag()}}
                                     {{form.first_name.label(class_="label")}}{{form.first_name(class_="appFormInput")}}
                                     {{form.last_name.label(class_="label")}}{{form.last_name(class_="appFormInput")}}

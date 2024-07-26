@@ -32,7 +32,7 @@ class Product(db.Model, UserMixin):
      category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
      description = db.Column(db.String(200), nullable=True)
 
-     category = db.relationship('Category', backref='product', lazy=True)
+     category = db.relationship('Category', backref='products', lazy=True)
 
      def __init__(self, name, price, category_id, description):
           self.name = name

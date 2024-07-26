@@ -102,25 +102,28 @@ def view_user():
 def add_product():
      form = ProductAddForm()
      products = Product.query.all()
-     if request.method == 'POST':
-          if not form.validate_on_submit():
-               flash('All fields are required.')
-               return render_template('add-product.html', form=form)
-          
-          # Create new Product entry
+     # Populate the category choices
+     form.category.choices = [(category.id, category.name) for category in Category.query.all()]
+
+     if form.validate_on_submit():
+          print(form.data)
+          # Create a new Product entry
           prod = Product(
-                    name = form.name.data,
-                    price = form.price.data,
-                    category_id = form.category.data,
-                    description= form.description.data)
-          
+               name=form.name.data,
+               price=form.price.data,
+               category_id=form.category.data,
+               description=form.description.data
+          )
           db.session.add(prod)
           db.session.commit()
-          flash('Submited')
-          return redirect(url_for("view_product"))
-          
-     if request.method == 'GET':
-          return render_template('add-product.html', form=form)
+          flash('Product submitted successfully.')
+          return redirect(url_for('view_product', products=products))
+     
+     else:
+          print(form.errors)
+          flash('All fields are required.')
+
+     return render_template('add-product.html', form=form)
      
 # add orders
 # @app.route('/add_order', methods=['GET', 'POST'])
