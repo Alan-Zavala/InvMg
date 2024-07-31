@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Users - IMS</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/login.css') }}">
+    <script src="https://kit.fontawesome.com/fdb8866bb6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="dashboardMainContainer">
+        {% include 'partials/app-sidebar.html' %}
+        </div>
+        <div class="dashboard_content_container" id="dashboard_content_container">
+            {% include 'partials/dashboard_topNav.html' %}
+            <div class="dashboard_content">
+                <div class="dashboard_content_main">
+                    <div class="row">
+                        <div class="column column-12">
+                            <h1 class="section_header"><i class="fa fa-plus"></i>Add User</h1>
+                            <div id="userAddFormContianer">
+                                <form action="{{ url_for('add_user') }}" method="POST" class="appForm">
+                                    {{form.hidden_tag()}}
+                                    {{form.first_name.label(class_="label")}}{{form.first_name(class_="appFormInput")}}
+                                    {{form.last_name.label(class_="label")}}{{form.last_name(class_="appFormInput")}}
+                                    {{form.username.label(class_="label")}}{{form.username(class_="appFormInput")}}
+                                    {{form.password.label(class_="label")}}{{form.password(class_="appFormInput")}}
+                                    {{form.role.label(class="label")}}{{form.role(class_="appFormInput")}}
+                                    {{form.submit(class_="appBtn")}}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>
