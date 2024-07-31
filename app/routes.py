@@ -106,7 +106,6 @@ def add_product():
      form.category.choices = [(category.id, category.name) for category in Category.query.all()]
 
      if form.validate_on_submit():
-          print(form.data)
           # Create a new Product entry
           prod = Product(
                name=form.name.data,
@@ -120,7 +119,6 @@ def add_product():
           return redirect(url_for('view_product', products=products))
      
      else:
-          print(form.errors)
           flash('All fields are required.')
 
      return render_template('add-product.html', form=form)

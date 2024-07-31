@@ -32,8 +32,8 @@ class UserAddForm(FlaskForm):
 class ProductAddForm(FlaskForm):
      name = StringField(validators=[InputRequired(), Length(max=50)], render_kw={"placeholder": ""})
      category = SelectField('Category', validators=[DataRequired()], coerce=int)
-     price = DecimalField('price', places=2)
-     description = StringField(validators=[InputRequired(), Length(max=200)], render_kw={"placeholder": ""})
+     price = FloatField('price', validators=[InputRequired()])
+     description = StringField(validators=[Length(max=200)], render_kw={"placeholder": ""})
      submit = SubmitField("Add Product")
      def __init__(self, *args, **kwargs):
         super(ProductAddForm, self).__init__(*args, **kwargs)
